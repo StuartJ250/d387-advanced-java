@@ -15,6 +15,10 @@ import {map} from "rxjs/operators";
 })
 export class AppComponent implements OnInit{
 
+  welcomeMessageEng: String = ""
+  welcomeMessageFr: String = ""
+
+
   constructor(private httpClient:HttpClient){}
 
   private baseURL:string='http://localhost:8080';
@@ -28,11 +32,18 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
 
-    ngOnInit(){
-      this.roomsearch= new FormGroup({
+    ngOnInit() {
+
+      this.httpClient.get<{ english: String, french: String }>(this.baseURL + "/api/welcome").subscribe(response =>{
+        this.welcomeMessageEng = response.english;
+        this.welcomeMessageFr = response.french;
+      })
+
+      this.roomsearch = new FormGroup({
         checkin: new FormControl(' '),
         checkout: new FormControl(' ')
       });
+
 
  //     this.rooms=ROOMS;
 
@@ -82,6 +93,9 @@ export class AppComponent implements OnInit{
 
        return this.httpClient.get(this.baseURL + '/room/reservation/v1?checkin='+ this.currentCheckInVal + '&checkout='+this.currentCheckOutVal, {responseType: 'json'});
     }
+
+
+
 
   }
 
