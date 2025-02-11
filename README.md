@@ -66,6 +66,7 @@ B.  Modify the Landon Hotel scheduling application for localization and internat
     2.  Modify the front end to display the price for a reservation in currency rates for U.S. dollars ($), Canadian dollars (C$), and euros (€) on different lines.
 
             Note: It is not necessary to convert the values of the prices.
+
 - Added priceCAD and priceEUR variables in app.component.ts on lines 116-117
 - Added code to assign price to priceCAD and priceEUR in app.component.ts on lines 65-67
 - Added code to display the different currencies in app.component.html on lines 82-83
@@ -76,6 +77,17 @@ B.  Modify the Landon Hotel scheduling application for localization and internat
 
         b.  Use the time zone conversion method from part B3a to display a message stating the time in all three times zones in hours and minutes for an online, live presentation held at the Landon Hotel. The times should be displayed as ET, MT, and UTC.
 
+- Created TimeConversion.java in timezones package
+- Created getTimeZones() in TimeConversion.java on lines 10-27
+- Created TimeConversionController.java in timezones package
+- Added code in TimeConversionController.java on lines 19-31
+- Added variable presentationText in app.component.ts on line 20
+- Added code in app.component.ts on lines 42-46
+- Added 2 breaks in app.component.html on lines 29-30
+- Added text in app.component.html on line 31
+- Added the {{presentationText}} in app.component.html on line 32
+- Fixed code in app.component.ts on lines 42-45
+- Had 500 API error: Fixed incorrect Mountain Time ZoneID in TimeConversion.java on line 15
 
 C.  Explain how you would deploy the Spring application with a Java back end and an Angular front end to cloud services and create a Dockerfile using the attached supporting document "How to Create a Docker Account" by doing the following:
 

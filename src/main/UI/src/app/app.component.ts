@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
 
   welcomeMessageEng: String = ""
   welcomeMessageFr: String = ""
-
+  presentationText: String = ""
 
   constructor(private httpClient:HttpClient){}
 
@@ -37,6 +37,11 @@ export class AppComponent implements OnInit{
       this.httpClient.get<{ english: String, french: String }>(this.baseURL + "/api/welcome").subscribe(response =>{
         this.welcomeMessageEng = response.english;
         this.welcomeMessageFr = response.french;
+      })
+
+      this.httpClient.get<{times: String}>(this.baseURL + "/api/timezones").subscribe( response =>{
+        this.presentationText = response.times;
+
       })
 
       this.roomsearch = new FormGroup({
